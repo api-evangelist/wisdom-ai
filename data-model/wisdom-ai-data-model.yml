@@ -1,0 +1,138 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+docs: https://docs.wisdom.ai/integrations/graphql-api/graphql-primer
+note: >-
+  Entity-relationship graph of the WisdomAI GraphQL API object model, captured
+  from the published object reference (docs.wisdom.ai GraphQL API > Objects).
+  WisdomAI publishes no OpenAPI/SDL download; every entity, field, and
+  relationship below is taken verbatim from the documented object pages.
+  ZSheet is the schema's underlying name for a Domain.
+entities:
+- name: Dashboard
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/dashboard
+  description: Collection of widgets and visualizations.
+  id_field: id
+- name: DashboardWidget
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/dashboard-widget
+  description: Single widget on a dashboard, backed by a natural-language query (nlQuery) and a visualization.
+  id_field: id
+- name: DomainModel
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/domain-model
+  description: Domain organizing related data sources, knowledge, joins, and AI configuration (aka ZSheet in the schema).
+  id_field: id
+- name: DatabaseModel
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/database-model
+  description: Database within a domain, with tables and a connection.
+  id_field: id
+- name: Connection
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/connection
+  description: Data source connection (warehouse, BI tool, or file), with ConnectionDetails and job status history.
+  id_field: id
+- name: Knowledge
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/knowledge
+  description: Domain-specific knowledge entry used to ground AI answers.
+- name: User
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/user
+  description: User account, with role assignments, user attributes, and SCIM-management flag.
+  id_field: id
+- name: ChatMessage
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/chat-message
+  description: Message in a conversation; body is a Delta document, sender is a ChatMessageSender.
+  id_field: id
+- name: Conversation
+  docs: https://docs.wisdom.ai/integrations/graphql-api/mutations/chat/create-conversation
+  description: Chat thread scoped to a domain; created via createConversation, streamed via subscribeConversation.
+  id_field: conversationId
+- name: Visualization
+  docs: https://docs.wisdom.ai/integrations/graphql-api/objects/visualization
+  description: Chart/table rendering of a widget or answer (VisualizationType enum, VizConfig).
+relationships:
+- from: Dashboard
+  to: User
+  kind: has_one
+  via: owner
+  note: Null for system-generated dashboards.
+- from: Dashboard
+  to: DomainModel
+  kind: has_many
+  via: domains
+  note: Deprecated singular `domain` field also exists.
+- from: Dashboard
+  to: DashboardWidget
+  kind: has_many
+  via: widgets
+- from: Dashboard
+  to: DashboardFilterDefinition
+  kind: has_many
+  via: filters
+- from: Dashboard
+  to: RoleAssignment
+  kind: has_many
+  via: roleAssignments
+- from: DashboardWidget
+  to: DomainModel
+  kind: has_one
+  via: domain
+- from: DashboardWidget
+  to: Visualization
+  kind: has_one
+  via: visualization
+- from: DashboardWidget
+  to: Conversation
+  kind: belongs_to
+  via: conversationId
+  note: Widgets created from chat answers keep conversationId + messageId provenance.
+- from: DomainModel
+  to: DatabaseModel
+  kind: has_many
+  via: databases
+- from: DomainModel
+  to: Dataset
+  kind: has_many
+  via: datasets
+  note: File-based sources (S3, Azure Blob Storage, SharePoint, Wisdom-managed).
+- from: DomainModel
+  to: Knowledge
+  kind: has_many
+  via: knowledge
+- from: DomainModel
+  to: TableJoin
+  kind: has_many
+  via: joins
+- from: DatabaseModel
+  to: DomainModel
+  kind: belongs_to
+  via: domainId
+- from: DatabaseModel
+  to: Connection
+  kind: has_one
+  via: connection
+- from: DatabaseModel
+  to: TableModel
+  kind: has_many
+  via: tables
+- from: Knowledge
+  to: User
+  kind: has_one
+  via: updatedBy
+- from: ChatMessage
+  to: Conversation
+  kind: belongs_to
+  via: conversationId
+- from: ChatMessage
+  to: DomainModel
+  kind: belongs_to
+  via: domainId
+- from: ChatMessage
+  to: User
+  kind: belongs_to
+  via: userId
+- from: User
+  to: RoleAssignment
+  kind: has_many
+  via: roleAssignments
+- from: User
+  to: UserAttribute
+  kind: has_many
+  via: userAttributes

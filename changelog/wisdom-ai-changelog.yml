@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wisdom.ai/product-updates/june-2026/june-features
+scheme: dated-product-updates
+docs: https://docs.wisdom.ai/product-updates/june-2026/june-features
+entries:
+- version: june-2026
+  date: '2026-06-01'
+  breaking: false
+  highlights:
+  - Skills — reusable, versioned instructions for team workflows.
+  - Deployment Models — SaaS Hosted, Cloud-Prem, or On-Prem options.
+  - Dual-axis charts.
+  - Ghost-text completion.
+  - Parameterized agents.
+  - Domain health monitoring and context builders.
+notes: >-
+  WisdomAI publishes dated product updates under docs.wisdom.ai/product-updates;
+  only the current (June 2026) window was captured. See the docs index for
+  additional months.

@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of https://www.wisdom.ai and https://docs.wisdom.ai
+hosts:
+- host: https://www.wisdom.ai
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://docs.wisdom.ai
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/wisdom-ai-llms.txt
+    note: GitBook-served llms.txt saved verbatim in llms/
+notes: >-
+  No RFC 9116 security.txt, OIDC discovery, OAuth authorization-server
+  metadata, RFC 9727 api-catalog, or ai-plugin.json published on either host
+  as of 2026-07-21. The docs host does publish llms.txt (captured). The
+  llms.txt advertises an OpenAPI spec at
+  https://docs.wisdom.ai/api-reference/openapi.json but that URL returns 404
+  (GitBook template artifact) — no OpenAPI is actually published.

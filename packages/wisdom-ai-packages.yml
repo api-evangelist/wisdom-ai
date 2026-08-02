@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.npmjs.com/org/wisdomai
+packages:
+- language: javascript
+  registry: npm
+  name: "@wisdomai/react"
+  version: 0.0.10
+  url: https://www.npmjs.com/package/@wisdomai/react
+  install: npm install @wisdomai/react
+  repository: https://github.com/datawisdomai/wisdom
+  description: WisdomAI React SDK — embed dashboards, widgets, and visualizations in a React app.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@wisdomai/node"
+  version: 0.1.0
+  url: https://www.npmjs.com/package/@wisdomai/node
+  install: npm install @wisdomai/node
+  repository: https://github.com/datawisdomai/wisdom
+  description: >-
+    Server-side Node SDK for WisdomAI — exchanges a long-lived access token for a
+    short-lived JWT (getAuthToken) so embedded frontends never handle the secret.
+  official: true
+- language: python
+  registry: github
+  name: wisdom_python_client
+  url: https://github.com/datawisdomai/wisdom_python_client
+  install: git clone https://github.com/datawisdomai/wisdom_python_client
+  repository: https://github.com/datawisdomai/wisdom_python_client
+  description: >-
+    First-party Python sample client for the Wisdom API — demonstrates Descope
+    access-key exchange (exchange_access_key) and the WebSocket subscription
+    flow. Sample code only; not published to PyPI (wisdom-ai/wisdomai both 404
+    on PyPI as of 2026-07-21).
+  official: true
+  published: false
+notes: >-
+  Both npm packages are maintained under the npm @wisdomai org by WisdomAI staff
+  (david@wisdom.ai, milan@wisdom.ai, harshit@wisdom.ai) and published from the
+  github.com/datawisdomai/wisdom monorepo. No first-party Python/Go/Java/Ruby
+  client library is published to a registry; the datawisdomai org ships a
+  Python sample client repo (wisdom_python_client) and an embedding demo
+  (wisdom_embed_demo). Integrations otherwise use the GraphQL API directly.

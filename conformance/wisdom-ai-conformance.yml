@@ -1,0 +1,35 @@
+generated: '2026-07-21'
+method: searched
+source: https://trust.wisdom.ai/
+standards:
+- id: oauth2
+  conforms: true
+  evidence: MCP server uses OAuth 2.1 with Dynamic Client Registration and PKCE.
+- id: oidc
+  conforms: true
+  evidence: Identity via Descope; SSO supported for account access.
+- id: graphql
+  conforms: true
+  evidence: Primary API is GraphQL (queries, mutations, WebSocket subscriptions).
+- id: mcp
+  conforms: true
+  evidence: Published remote MCP server over Streamable HTTP.
+- id: scim2
+  conforms: true
+  evidence: Automated provisioning via JIT/SCIM documented under account management.
+- id: sso-saml
+  conforms: true
+  evidence: SSO and RBAC documented for account/user management.
+- id: soc2-type-2
+  conforms: true
+  evidence: SOC 2 Type II published on trust.wisdom.ai.
+- id: iso-27001
+  conforms: true
+  evidence: ISO 27001 published on trust.wisdom.ai.
+- id: gdpr
+  conforms: true
+  evidence: GDPR compliance stated on marketing site and trust center.
+- id: hipaa
+  conforms: partial
+  evidence: HIPAA-ready per marketing site.
+compliance_url: https://trust.wisdom.ai/

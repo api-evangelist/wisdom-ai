@@ -1,0 +1,35 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wisdom.ai/integrations/mcp-server/MCP-Server
+status: published
+server:
+  name: wisdomai
+  transport: http          # Streamable HTTP
+  url: https://{ACCOUNT}.wisdom.ai/mcp
+  notes: >-
+    Remote/hosted MCP server. Replace {ACCOUNT} with your account subdomain; the
+    endpoint must match your login domain (wisdom.ai or askwisdom.ai).
+auth:
+  scheme: oauth2.1
+  dynamic_client_registration: true
+  pkce: true
+  discovery:
+  - /.well-known/oauth-protected-resource
+  - /.well-known/oauth-authorization-server
+install:
+  claude_code: claude mcp add --transport http wisdomai https://{ACCOUNT}.wisdom.ai/mcp
+  config_json: |
+    {
+      "mcpServers": {
+        "wisdomai": {
+          "url": "https://{ACCOUNT}.wisdom.ai/mcp"
+        }
+      }
+    }
+tools:
+- name: chat
+  description: Query data domains using natural language, returning text, tables, and visualizations.
+- name: list-domains
+  description: Discover available domains and their IDs.
+- name: echo
+  description: Test connectivity and verify request/response flow.

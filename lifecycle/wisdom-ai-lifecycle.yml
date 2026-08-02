@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wisdom.ai/
+versioning:
+  scheme: dated-product-updates
+  docs: https://docs.wisdom.ai/product-updates/june-2026/june-features
+  note: >-
+    SDK packages are semver-versioned on npm (@wisdomai/react 0.0.x,
+    @wisdomai/node 0.1.x); the GraphQL API is not path-versioned (single
+    tenant-scoped /graphql endpoint).
+sla:
+  url: https://www.wisdom.ai/sla
+deployment_models:
+- SaaS Hosted
+- Cloud-Prem
+- On-Prem
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support was found.
+status_page: null

@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wisdom.ai/integrations/embeddings/sdk/sdk-components
+loader: "@wisdomai/react"
+families:
+- family: Provider
+  components:
+  - name: WisdomProvider
+    description: >-
+      Root context provider that all embedded components live inside; fetches and
+      auto-refreshes the short-lived JWT (default from same-origin POST /auth-token)
+      and carries theme.
+  - name: DashboardProvider
+    description: >-
+      Advanced composable-layer provider that loads a dashboard once so multiple
+      widgets can read from it (used with useDashboardWidget).
+- family: Dashboards & widgets
+  components:
+  - name: Dashboard
+    description: Renders an entire WisdomAI dashboard (header, filter bar, widget grid) by dashboardId.
+  - name: DashboardWidget
+    description: Renders a single chart or metric by dashboardId + widgetId.
+  - name: WisdomVisualization
+    description: >-
+      Composable low-level visualization component for full control over the card
+      around a widget; takes a visualization plus a fetchMore callback for
+      paginating large series.
+- family: Hooks
+  components:
+  - name: useDashboardWidget
+    description: >-
+      Hook that reads a widget from a DashboardProvider, returning { widget, status,
+      error, fetchMore } for building custom containers/loading/empty states.
+embedding_surfaces:
+- name: iframe dashboard embed
+  docs: https://docs.wisdom.ai/integrations/embeddings/iframe/embed-a-dashboard
+- name: iframe chat embed
+  docs: https://docs.wisdom.ai/integrations/embeddings/iframe/embed-chat
+peer_dependencies:
+- react@^18
+- react-dom@^18
+- "@mui/material@^7"
+- "@mui/x-date-pickers@^7"
+- "@emotion/react@^11"
+- "@emotion/styled@^11"
+- highcharts@^12
+- highcharts-react-official@^3
+- graphql@^16
+- luxon@^3

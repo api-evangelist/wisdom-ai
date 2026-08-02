@@ -1,8 +1,29 @@
 aid: wisdom-ai
 name: Wisdom AI
-description: 'Wisdom AI is a company surfaced as a portfolio company of kleiner-perkins and added to the
-  API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  WisdomAI is an enterprise agentic analytics platform built around an Adaptive
+  Context Engine that governs business context across distributed data sources
+  (Snowflake, BigQuery, Databricks, Redshift, SharePoint, and more). It powers
+  conversational business intelligence, AI-powered dashboards, and analytics
+  agents that the company reports deliver 95%+ answer accuracy in production.
+  For developers, WisdomAI exposes a GraphQL API (queries, mutations, and
+  WebSocket subscriptions), a React and Node embedding SDK (@wisdomai/react,
+  @wisdomai/node), and a remote Model Context Protocol (MCP) server, all
+  governed by row-level and column-level security, SSO, and SCIM/JIT
+  provisioning so teams can build custom and embedded analytics experiences.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/assets/43nPV2DraEOsNMFDaMIdigVzUU.png
 url: https://raw.githubusercontent.com/api-evangelist/wisdom-ai/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +32,108 @@ x-backed-by:
 x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v1
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-- Ai
-apis: []
+- AI
+- Analytics
+- Business Intelligence
+- GraphQL
+- MCP
+- Embedded Analytics
+- Agents
+- Data
+apis:
+- name: WisdomAI GraphQL API
+  description: >-
+    Single GraphQL endpoint for programmatic access to WisdomAI domains, tables,
+    users, dashboards, and analytics data. Supports queries, mutations, and
+    real-time WebSocket subscriptions. Tenant-scoped: replace {ACCOUNT} with
+    your WisdomAI tenant (both askwisdom.ai and wisdom.ai are valid depending on
+    deployment). Authenticate with a JWT session token obtained by exchanging an
+    API access key via the exchangeAccessToken query (Descope).
+  humanURL: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+  baseURL: https://{ACCOUNT}.askwisdom.ai/graphql
+  properties:
+  - type: Documentation
+    url: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+  - type: APIReference
+    url: https://docs.wisdom.ai/integrations/graphql-api/graphql-primer
+  - type: GettingStarted
+    url: https://docs.wisdom.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/wisdom-ai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/wisdom-ai-problem-types.yml
+  tags:
+  - GraphQL
+  - Analytics
+  - Business Intelligence
+common:
+- type: DeveloperPortal
+  url: https://docs.wisdom.ai/
+- type: Documentation
+  url: https://docs.wisdom.ai/getting-started/overview
+- type: APIReference
+  url: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+- type: GettingStarted
+  url: https://docs.wisdom.ai/getting-started/overview
+- type: Blog
+  url: https://www.wisdom.ai/blog
+- type: Support
+  url: https://www.wisdom.ai/contact
+- type: SignUp
+  url: https://www.wisdom.ai/demo-wisdom-ai
+- type: TermsOfService
+  url: https://www.wisdom.ai/msa
+- type: PrivacyPolicy
+  url: https://www.wisdom.ai/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/datawisdomai
+- type: MCPServer
+  url: mcp/wisdom-ai-mcp.yml
+- type: Authentication
+  url: authentication/wisdom-ai-authentication.yml
+- type: Packages
+  url: packages/wisdom-ai-packages.yml
+- type: SDKs
+  url: packages/wisdom-ai-packages.yml
+- type: Components
+  url: components/wisdom-ai-components.yml
+- type: ErrorCatalog
+  url: errors/wisdom-ai-problem-types.yml
+- type: Conventions
+  url: conventions/wisdom-ai-conventions.yml
+- type: ChangeLog
+  url: changelog/wisdom-ai-changelog.yml
+- type: Lifecycle
+  url: lifecycle/wisdom-ai-lifecycle.yml
+- type: Conformance
+  url: conformance/wisdom-ai-conformance.yml
+- type: Compliance
+  url: https://trust.wisdom.ai/
+- type: TrustCenter
+  url: https://trust.wisdom.ai/
+- type: Security
+  url: https://docs.wisdom.ai/manage-account/compliance-and-best-practices
+- type: VulnerabilityDisclosure
+  url: security/wisdom-ai-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/wisdom-ai-domain-security.yml
+- type: DataModel
+  url: data-model/wisdom-ai-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/wisdom-ai-llms.txt
+- type: WellKnown
+  url: well-known/wisdom-ai-well-known.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

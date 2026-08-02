@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: generated
+source: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+note: >-
+  Skills are grounded in the documented GraphQL operations (WisdomAI publishes
+  no OpenAPI; operation names verified against the docs.wisdom.ai GraphQL
+  reference pages on 2026-07-21).
+skills:
+- file: wisdom-ai-ask-a-question.md
+  name: Ask WisdomAI a data question
+  api: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+  operations: [exchangeAccessToken, createConversation, sendUserMessage, subscribeConversation]
+- file: wisdom-ai-build-dashboard.md
+  name: Build and refresh a WisdomAI dashboard
+  api: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+  operations: [dashboards, createDashboard, addWidgetToDashboard, updateDashboardFilters, refreshDashboard]
+- file: wisdom-ai-provision-and-embed.md
+  name: Provision WisdomAI users and embed analytics
+  api: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+  operations: [createUsers, setUserAttributes, listUsers, impersonateUser, triggerSchedule]

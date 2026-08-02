@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wisdom.ai/integrations/graphql-api/GraphQL-API
+api_style: graphql
+endpoint:
+  http: https://{ACCOUNT}.askwisdom.ai/graphql
+  websocket: wss://{ACCOUNT}.askwisdom.ai/graphql
+  note: >-
+    Single GraphQL endpoint for queries and mutations; real-time subscriptions
+    use the WebSocket endpoint. Tenant-scoped host ({ACCOUNT}.askwisdom.ai or
+    {ACCOUNT}.wisdom.ai).
+authentication:
+  style: bearer-jwt
+  header: "Authorization: Bearer <session-token>"
+  flow: >-
+    Create an API access key -> exchange it for a short-lived JWT via the
+    exchangeAccessToken query -> pass the JWT on every request and in WebSocket
+    connection payloads. Embedded flows mint per-user JWTs via impersonateUser.
+  token_refresh: >-
+    The React SDK's WisdomProvider refreshes the short-lived JWT before it
+    expires; callers using the raw API re-exchange the access key as needed.
+  ref: authentication/wisdom-ai-authentication.yml
+error_handling:
+  always_http_200: true
+  request_level: "top-level `errors` array"
+  mutation_level: "`status` object (ResponseStatus { code, message })"
+  transport_errors: [401, 400, 500]
+  ref: errors/wisdom-ai-problem-types.yml
+pagination:
+  style: fetch-more
+  mechanism: >-
+    Widget/visualization data is paginated via a `fetchMore` callback exposed by
+    useDashboardWidget / WisdomVisualization for large series (SDK-level).
+subscriptions:
+  transport: websocket
+  description: >-
+    WebSocket-based GraphQL subscriptions let clients ask business-intelligence
+    questions and receive structured responses including tabular data and SQL.
+multi_tenancy:
+  isolation: >-
+    Per-user (multi-tenant) embedded tokens via impersonateUser; row-level (RLS)
+    and column-level (CLS) security enforced server-side.
+  docs: https://docs.wisdom.ai/manage-account/row-level-access-control/row-level-access-control
+idempotency:
+  supported: false
+  note: No idempotency-key contract is documented for the GraphQL API.
+versioning:
+  ref: lifecycle/wisdom-ai-lifecycle.yml

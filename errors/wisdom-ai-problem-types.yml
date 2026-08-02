@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wisdom.ai/integrations/embeddings/error-handling
+format: graphql
+envelope: >-
+  The GraphQL API always returns HTTP 200 even on failure. Callers must inspect
+  the response body: request-level failures appear in a top-level `errors` array;
+  mutation-level failures appear as a `status` object (ResponseStatus) with a
+  non-OK `code`. Non-200 HTTP status codes indicate transport/authentication
+  problems, not application failures.
+response_status:
+  type: ResponseStatus
+  shape: "{ code: StatusCode!, message: String! }"
+  selection: "Always request `status { code message }` in mutation selection sets."
+status_codes:
+- code: OK
+  meaning: Operation succeeded.
+- code: ERROR
+  meaning: Operation failed (see message for details).
+- code: NOT_FOUND
+  meaning: The requested resource does not exist.
+- code: NONE
+  meaning: No status available.
+transport_errors:
+- status: 401
+  title: Unauthorized
+  cause: Invalid or missing authentication token.
+- status: 400
+  title: Bad Request
+  cause: Malformed request payload.
+- status: 500
+  title: Internal Server Error
+  cause: Unexpected API failure.
+examples:
+  request_level_error: |
+    { "errors": [ { "message": "Unauthorized", "locations": [{ "line": 1, "column": 1 }] } ], "data": null }
+  mutation_failure: |
+    { "data": { "createUsers": { "status": { "code": "ERROR", "message": "User with email already exists" } } } }
