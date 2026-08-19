@@ -4,11 +4,10 @@ source: https://docs.wisdom.ai/integrations/mcp-server/MCP-Server
 status: published
 server:
   name: wisdomai
-  transport: http          # Streamable HTTP
+  transport: http
   url: https://{ACCOUNT}.wisdom.ai/mcp
-  notes: >-
-    Remote/hosted MCP server. Replace {ACCOUNT} with your account subdomain; the
-    endpoint must match your login domain (wisdom.ai or askwisdom.ai).
+  notes: Remote/hosted MCP server. Replace {ACCOUNT} with your account subdomain; the endpoint must match
+    your login domain (wisdom.ai or askwisdom.ai).
 auth:
   scheme: oauth2.1
   dynamic_client_registration: true
@@ -18,14 +17,8 @@ auth:
   - /.well-known/oauth-authorization-server
 install:
   claude_code: claude mcp add --transport http wisdomai https://{ACCOUNT}.wisdom.ai/mcp
-  config_json: |
-    {
-      "mcpServers": {
-        "wisdomai": {
-          "url": "https://{ACCOUNT}.wisdom.ai/mcp"
-        }
-      }
-    }
+  config_json: "{\n  \"mcpServers\": {\n    \"wisdomai\": {\n      \"url\": \"https://{ACCOUNT}.wisdom.ai/mcp\"\
+    \n    }\n  }\n}\n"
 tools:
 - name: chat
   description: Query data domains using natural language, returning text, tables, and visualizations.
@@ -33,3 +26,12 @@ tools:
   description: Discover available domains and their IDs.
 - name: echo
   description: Test connectivity and verify request/response flow.
+deployment:
+  mode: none
+  endpoint: https://{ACCOUNT}.wisdom.ai/mcp
+  verified: probed
+  probe: dead
+  note: the endpoint this manifest claimed did not answer; recorded as none rather than deleted so the
+    claim stays auditable
+  checked: '2026-08-12'
+  source: catalog MCP census
