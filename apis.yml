@@ -97,6 +97,8 @@ apis:
   - Analytics
   - Business Intelligence
 common:
+- type: Website
+  url: https://www.wisdom.ai/
 - type: DeveloperPortal
   url: https://docs.wisdom.ai/
 - type: Documentation
