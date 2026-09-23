@@ -1,0 +1,31 @@
+# Front Door AI Index — wisdom-ai — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: wisdom-ai
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.wisdom.ai
+  final_host: www.wisdom.ai
+  ownership: own
+  owner: wisdom-ai
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 79
+  host_score: 79
+  density: 51.5
+  words: 1534
+  tiers:
+    agentic: 42
+    core: 33
+    model: 4
+  ambiguous: 26
+  top_terms:
+    agentic: 34
+    AI: 33
+    agent: 15
+    intelligence: 11
+    MCP: 6
+    Claude: 4
+    AI agent: 2
